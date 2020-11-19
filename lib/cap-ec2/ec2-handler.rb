@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-ec2'
 
 module CapEC2
   class EC2Handler
@@ -14,11 +14,7 @@ module CapEC2
     end
 
     def ec2_connect(region=nil)
-      Aws::EC2::Client.new(
-        access_key_id: fetch(:ec2_access_key_id),
-        secret_access_key: fetch(:ec2_secret_access_key),
-        region: region
-      )
+      Aws::EC2::Client.new(region: region)
     end
 
     def status_table
